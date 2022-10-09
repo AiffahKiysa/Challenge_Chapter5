@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My Film</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="shr_app_name">Binar</string>
+    <string name="username">Input Username</string>
+    <string name="fullname">Input Fullname</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="home">Home</string>
+    <string name="account">Account</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="indonesia" translatable="false">Indonesia</string>
+    <string name="english" translatable="false">English</string>
+    <string name="back" translatable="false">Back</string>
+    <string name="passwordConfirmation" translatable="false">Confirm Password</string>
+    <string name="password">Input Password</string>
+    <string name="name">Name</string>
+    <string name="app_name_title">Movie App</string>
+    <string name="email">Input Email</string>
+    <string name="akun_name">Name</string>
+    <string name="akun_fullname">Fullname</string>
+    <string name="akun_email" translatable="false">Email</string>
+    <string name="akun_pass">Password</string>
+    <string name="header" translatable="false">Aiffah Kiysa</string>
+</resources>

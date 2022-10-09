@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Film Saya</string>
+    <string name="shr_app_name">Binar</string>
+    <string name="username">Masukkan Username</string>
+    <string name="fullname">Masukkan Nama Lengkap</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="home">Beranda</string>
+    <string name="account">Akun</string>
+    <string name="title">Judul</string>
+    <string name="body">Keterangan</string>
+    <string name="password">Masukkan Kata Sandi</string>
+    <string name="name">Nama</string>
+    <string name="app_name_title">Film app</string>
+    <string name="email">Masukkan Email</string>
+    <string name="akun_name">Nama</string>
+    <string name="akun_fullname">Nama Lengkap</string>
+    <string name="akun_pass">Kata Sandi</string>
+</resources>
