@@ -10,7 +10,7 @@ import com.example.challenge_chapter5.R
 import com.example.challenge_chapter5.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
-    lateinit var binding : FragmentDetailBinding
+    lateinit var binding: FragmentDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,7 +21,7 @@ class DetailFragment : Fragment() {
         var getoriginalTitle = arguments?.getString("originalTitle")
         var gettitle = arguments?.getString("title")
         var getposterPath = arguments?.getString("posterPath")
-        var getpopularity = arguments?.getDouble("popularity")
+        var getrelease = arguments?.getString("release_date")
         var getoverview = arguments?.getString("overview")
         binding.ivPoster.load("https://www.themoviedb.org/t/p/w220_and_h330_face/" + getposterPath){
             crossfade(true)
@@ -31,7 +31,7 @@ class DetailFragment : Fragment() {
         binding.id.setText(getid.toString())
         binding.originalTitle.setText(getoriginalTitle)
         binding.title.setText(gettitle)
-        binding.popularity.setText(getpopularity.toString())
+        binding.releaseDate.setText(getrelease)
         binding.overview.setText(getoverview)
 
         return binding.root

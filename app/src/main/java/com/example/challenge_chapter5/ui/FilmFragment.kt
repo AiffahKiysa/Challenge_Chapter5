@@ -18,7 +18,6 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
     private val binding get() = _binding!!
 
     private  val viewModel : MovieViewModel by viewModels()
-    private lateinit var adapter : MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +36,10 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
             // Handle menu item selected
             menuItem.isChecked = true
             when(menuItem.itemId){
+                R.id.home -> {
+                    findNavController().navigate(R.id.filmFragment)
+                    true
+                }
                 R.id.account -> {
                     findNavController().navigate(R.id.accountFragment)
                     true

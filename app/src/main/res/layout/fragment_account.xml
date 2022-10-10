@@ -48,7 +48,8 @@
             android:layout_marginStart="31dp"
             android:layout_marginTop="26dp"
             android:layout_toEndOf="@+id/img_profile"
-            android:text="@string/hello" />
+            android:text="@string/hello"
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/name"
@@ -67,8 +68,8 @@
         style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp">
 
@@ -83,6 +84,7 @@
                 style="@style/TextAppearance.MyApp.account.text"
                 android:textSize="20sp"
                 android:id="@+id/username"
+                android:textColor="@color/white"
                 android:text="@string/akun_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -91,6 +93,7 @@
                 style="@style/TextAppearance.MyApp.account.text"
                 android:textSize="20sp"
                 android:id="@+id/email"
+                android:textColor="@color/white"
                 android:text="@string/akun_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -104,22 +107,22 @@
         android:id="@+id/cv_home"
         style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_height="45dp"
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/myFilm"
                 android:layout_marginStart="20dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_movie_filter_profile" />
 
@@ -131,14 +134,14 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="25dp"
                 android:text="@string/home"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/film_direction"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="100dp"
+                android:layout_marginStart="134dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
@@ -150,22 +153,22 @@
         android:id="@+id/cv_favorite"
         style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_height="45dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ic_favorite"
                 android:layout_marginStart="20dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_favorite_24" />
 
@@ -177,14 +180,14 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="25dp"
                 android:text="@string/favorite"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/favorite_direction"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="76dp"
+                android:layout_marginStart="115dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
@@ -196,22 +199,22 @@
         android:id="@+id/cv_playlist"
         style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_height="45dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ic_playlist"
                 android:layout_marginStart="20dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_playlist_play_24" />
 
@@ -223,14 +226,14 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="25dp"
                 android:text="@string/playlist"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/film_playlist"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="84dp"
+                android:layout_marginStart="120dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
@@ -249,23 +252,23 @@
         android:id="@+id/cv_setting"
         style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         app:cardBackgroundColor="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ic_setting"
                 android:layout_marginStart="20dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_settings_24" />
 
@@ -277,7 +280,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="25dp"
                 android:text="@string/setting"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -287,23 +290,23 @@
         android:id="@+id/cv_logout"
         style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
         android:layout_width="300dp"
+        android:layout_height="45dp"
         app:cardBackgroundColor="@color/colorPrimary"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ic_logout"
                 android:layout_marginStart="20dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_login_24" />
 
@@ -315,7 +318,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="25dp"
                 android:text="@string/logout"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

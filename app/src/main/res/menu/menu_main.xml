@@ -2,6 +2,11 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"
+        android:checked="true" />
+    <item
         android:id="@+id/account"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_account_circle_30"
@@ -10,7 +15,8 @@
         app:showAsAction="ifRoom"/>
 
     <group
-        android:id="@+id/group1">
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/subtitle"
             android:title="Subtitle">
