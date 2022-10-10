@@ -23,4 +23,10 @@
     <string name="akun_email" translatable="false">Email</string>
     <string name="akun_pass">Password</string>
     <string name="header" translatable="false">Aiffah Kiysa</string>
+    <string name="profile">Profile</string>
+    <string name="hello">Hello</string>
+    <string name="favorite">Favorite</string>
+    <string name="playlist">Playlist</string>
+    <string name="setting">Settings</string>
+    <string name="logout">Logout</string>
 </resources>

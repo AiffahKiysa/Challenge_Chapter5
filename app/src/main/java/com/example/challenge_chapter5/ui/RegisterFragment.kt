@@ -39,14 +39,16 @@ class RegisterFragment : Fragment() {
     }
     fun registerBtn (){
         val username = binding.txtUsername.text.toString()
-        val fullname = binding.txtFullname.text.toString()
+        val name = binding.txtName.text.toString()
+        val email = binding.txtEmail.text.toString()
         val password = binding.txtPassword.text.toString()
         val confirmPassword = binding.txtConfirmPassword.text.toString()
 
         if (password == confirmPassword){
             var addData = sharedPref.edit()
             addData.putString("username", username)
-            addData.putString("fullname", fullname)
+            addData.putString("name", name)
+            addData.putString("email", email)
             addData.putString("password", password)
             addData.apply()
             Toast.makeText(requireContext(), "Data Save", Toast.LENGTH_SHORT).show()

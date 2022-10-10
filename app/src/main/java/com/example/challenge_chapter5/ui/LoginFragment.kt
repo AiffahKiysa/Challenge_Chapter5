@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
             var _password = binding.password.text.toString()
             if(username == _username && password == _password){
                 var addData = sharedPref.edit()
-                addData.putString("_email", _username)
+                addData.putString("_username", _username)
                 addData.putString("_password", _password)
                 addData.apply()
                 findNavController().navigate(R.id.action_loginFragment_to_filmFragment)

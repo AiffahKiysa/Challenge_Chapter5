@@ -17,4 +17,10 @@
     <string name="akun_name">Nama</string>
     <string name="akun_fullname">Nama Lengkap</string>
     <string name="akun_pass">Kata Sandi</string>
+    <string name="profile">Profil</string>
+    <string name="hello">Halo</string>
+    <string name="favorite">Favorit</string>
+    <string name="playlist">List Putar</string>
+    <string name="setting">Pengaturan</string>
+    <string name="logout">Keluar</string>
 </resources>
