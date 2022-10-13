@@ -3,11 +3,14 @@ package com.example.challenge_chapter5.ui
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.challenge_chapter5.R
@@ -27,9 +30,15 @@ class LoginFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         sharedPref = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
         var username = sharedPref.getString("username", null)
         var password = sharedPref.getString("password", null)
+
+        Handler(Looper.myLooper()!!).postDelayed({
+            if(username != null)
+                findNavController().navigate(R.id.action_loginFragment_to_filmFragment)
+        },1000)
 
         binding.login.setOnClickListener{
             var _username = binding.username.text.toString()

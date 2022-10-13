@@ -1,5 +1,6 @@
 package com.example.challenge_chapter5.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.core.content.ContextCompat
@@ -84,6 +85,7 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
             rvPost.adapter = adapter
 
         }
+        super.onViewCreated(view, savedInstanceState)
     }
     override fun onItemClick(MovieDetail: Item) {
     }
