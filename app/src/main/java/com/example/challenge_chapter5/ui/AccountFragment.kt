@@ -40,6 +40,15 @@ class AccountFragment : Fragment() {
             findNavController().navigate(R.id.filmFragment)
         }
 
+        binding.cvLogout.setOnClickListener(){
+            sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
+            var addData = sharedPrefs.edit()
+            addData.putString("_username", null)
+            addData.putString("_password", null)
+            addData.apply()
+            findNavController().navigate(R.id.action_accountFragment_to_loginFragment)
+        }
+
     }
 
 

@@ -30,15 +30,11 @@ class LoginFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        cekLogin()
 
         sharedPref = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
         var username = sharedPref.getString("username", null)
         var password = sharedPref.getString("password", null)
-
-        Handler(Looper.myLooper()!!).postDelayed({
-            if(username != null)
-                findNavController().navigate(R.id.action_loginFragment_to_filmFragment)
-        },1000)
 
         binding.login.setOnClickListener{
             var _username = binding.username.text.toString()
@@ -61,6 +57,16 @@ class LoginFragment : Fragment() {
         binding.register.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+    }
+
+    private fun cekLogin() {
+        var data = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
+        var username = data.getString("_username", null)
+
+        Handler(Looper.myLooper()!!).postDelayed({
+            if(username != null)
+                findNavController().navigate(R.id.action_loginFragment_to_filmFragment)
+        },1000)
     }
 
 }

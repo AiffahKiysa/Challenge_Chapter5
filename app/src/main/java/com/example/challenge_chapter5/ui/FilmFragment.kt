@@ -1,5 +1,6 @@
 package com.example.challenge_chapter5.ui
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
@@ -17,6 +18,7 @@ import java.util.*
 class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
     private var _binding: FragmentFilmBinding? = null
     private val binding get() = _binding!!
+    lateinit var sharedPrefs : SharedPreferences
 
     private  val viewModel : MovieViewModel by viewModels()
 
@@ -52,6 +54,15 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
                 R.id.English -> {
                     setLocale("en")
                     true
+                }
+                R.id.logout -> {
+                    sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
+                    var addData = sharedPrefs.edit()
+                    addData.putString("_username", null)
+                    addData.putString("_password", null)
+                    addData.apply()
+                    findNavController().navigate(R.id.action_filmFragment_to_loginFragment)
+
                 }
                 else -> false
             }
