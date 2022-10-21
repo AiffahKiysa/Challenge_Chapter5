@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.challenge_chapter5.R
 import com.example.challenge_chapter5.databinding.FragmentRegisterBinding
+import com.example.challenge_chapter5.model.User
 
 class RegisterFragment : Fragment() {
-    lateinit var binding: FragmentRegisterBinding
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
     lateinit var  sharedPref : SharedPreferences
 
     override fun onCreateView(
@@ -21,7 +24,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentRegisterBinding.inflate(inflater,container,false)
+        _binding = FragmentRegisterBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -30,7 +33,9 @@ class RegisterFragment : Fragment() {
         sharedPref = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
 
         binding.register.setOnClickListener{
-            registerBtn()
+            binding.apply {
+                registerBtn()
+            }
         }
 
         binding.btnBack.setOnClickListener{

@@ -22,11 +22,15 @@
     <string name="akun_fullname">Fullname</string>
     <string name="akun_email" translatable="false">Email</string>
     <string name="akun_pass">Password</string>
-    <string name="header" translatable="false">Aiffah Kiysa</string>
+    <string name="header" translatable="false">Movie App</string>
     <string name="profile">Profile</string>
     <string name="hello">Hello</string>
     <string name="favorite">Favorite</string>
     <string name="playlist">Playlist</string>
     <string name="setting">Settings</string>
     <string name="logout">Logout</string>
+    <string name="welcome">Welcome,</string>
+    <string name="update">update</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

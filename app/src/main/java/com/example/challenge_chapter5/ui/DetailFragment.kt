@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.challenge_chapter5.R
 import com.example.challenge_chapter5.databinding.FragmentDetailBinding
@@ -17,22 +18,29 @@ class DetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDetailBinding.inflate(inflater,container,false)
-        var getid = arguments?.getInt("id")
-        var getoriginalTitle = arguments?.getString("originalTitle")
+        var getoriginalTitle = "Title : " + arguments?.getString("originalTitle")
         var gettitle = arguments?.getString("title")
         var getposterPath = arguments?.getString("posterPath")
-        var getrelease = arguments?.getString("release_date")
+        var getrelease = "Release : " + arguments?.getString("releaseDate")
+        var getpopularity = "Popularity : " + arguments?.getDouble("popularity")
+        var getlanguage = "Language : " + arguments?.getString("language")
         var getoverview = arguments?.getString("overview")
+
         binding.ivPoster.load("https://www.themoviedb.org/t/p/w220_and_h330_face/" + getposterPath){
             crossfade(true)
             placeholder(R.drawable.ic_baseline_menu_24)
         }
 
-        binding.id.setText(getid.toString())
         binding.originalTitle.setText(getoriginalTitle)
         binding.title.setText(gettitle)
         binding.releaseDate.setText(getrelease)
+        binding.popularity.setText(getpopularity)
+        binding.language.setText(getlanguage)
         binding.overview.setText(getoverview)
+
+        binding.btnBack.setOnClickListener(){
+            findNavController().navigate(R.id.action_detailFragment_to_filmFragment)
+        }
 
         return binding.root
     }

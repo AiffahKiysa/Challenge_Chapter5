@@ -23,4 +23,6 @@
     <string name="playlist">List Putar</string>
     <string name="setting">Pengaturan</string>
     <string name="logout">Keluar</string>
+    <string name="welcome">Selamat Datang,</string>
+    <string name="update">perbarui</string>
 </resources>

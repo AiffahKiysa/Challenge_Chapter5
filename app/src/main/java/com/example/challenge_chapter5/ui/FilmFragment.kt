@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_chapter5.R
 import com.example.challenge_chapter5.databinding.FragmentFilmBinding
+import com.example.challenge_chapter5.databinding.HeaderNavigationBinding
 import com.example.challenge_chapter5.model.Item
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
@@ -30,7 +32,21 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
         return binding.root
     }
 
+    companion object{
+        const val USERNAME = "username"
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
+
+        val adapter: MovieAdapter by lazy {
+            MovieAdapter {
+
+            }
+        }
+        val user = sharedPrefs.getString(USERNAME, "")
+        binding.tvUser.text = "$user!"
+
         binding.topAppBar.setNavigationOnClickListener {
             binding.drawerLayout.open()
         }
@@ -38,6 +54,7 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             // Handle menu item selected
             menuItem.isChecked = true
+
             when(menuItem.itemId){
                 R.id.home -> {
                     findNavController().navigate(R.id.filmFragment)
@@ -71,12 +88,6 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
             true
         }
 
-        val adapter: MovieAdapter by lazy {
-            MovieAdapter {
-
-            }
-        }
-
         binding.apply {
             viewModel.showItemListData()
             viewModel.getLiveDataMovie().observe(viewLifecycleOwner){
@@ -98,8 +109,6 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
         }
         super.onViewCreated(view, savedInstanceState)
     }
-    override fun onItemClick(MovieDetail: Item) {
-    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -113,6 +122,10 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
         conf.locale = myLocale
         res.updateConfiguration(conf, res.displayMetrics)
         findNavController().navigate(R.id.filmFragment)
+    }
+
+    override fun onItemClick(MovieDetail: Item) {
+        TODO("Not yet implemented")
     }
 
 }

@@ -54,30 +54,16 @@ class MovieAdapter (private val itemClick: (Item) -> Unit) : RecyclerView.Adapte
                     item.originalTitle?.let { it1 -> bund.putString("originalTitle", it1) }
                     item.title?.let { it1 -> bund.putString("title", it1) }
                     item.posterPath?.let { it1 -> bund.putString("posterPath", it1) }
+                    item.releaseDate?.let { it1 -> bund.putString("releaseDate", it1) }
                     item.popularity?.let { it1 -> bund.putDouble("popularity", it1) }
+                    item.originalLanguage?.let { it1 -> bund.putString("language", it1) }
                     item.overview?.let { it1 -> bund.putString("overview", it1) }
-                    Navigation.findNavController(it).navigate(R.id.action_filmFragment_to_detailFragment, bund)
+                    findNavController(it).navigate(R.id.action_filmFragment_to_detailFragment, bund)
                 }
             }
 
         }
     }
-
-//    inner class ViewHolder(var binding : ListFilmBinding):RecyclerView.ViewHolder(binding.root) {
-//        fun bind(MovieDetail : Item){
-//
-////            binding.dataBinding = MovieDetail
-////            binding.imgFilm = MovieDetail.posterPath.
-////
-//////            Glide.with(itemView)
-//////                .load(MovieDetail.posterPath)
-//////                .into(binding.imageview)
-////
-////            itemView.setOnClickListener{
-////                ListMovie.onItemClick(MovieDetail)
-////            }
-//        }
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListFilmBinding.inflate(LayoutInflater.from(parent.context), parent, false)

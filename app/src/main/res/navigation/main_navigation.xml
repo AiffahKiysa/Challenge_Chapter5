@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <argument
+            android:name="dataEdit"
+            app:argType="com.example.challenge_chapter5.model.User" />
     </fragment>
     <fragment
         android:id="@+id/filmFragment"
@@ -50,10 +53,26 @@
         <action
             android:id="@+id/action_accountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.challenge_chapter5.ui.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_filmFragment"
+            app:destination="@id/filmFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/updateFragment"
+        android:name="com.example.challenge_chapter5.ui.UpdateFragment"
+        android:label="UpdateFragment"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </dialog>
 </navigation>
