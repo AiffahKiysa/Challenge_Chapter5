@@ -50,7 +50,7 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/originalTitle"
                     style="@style/TextAppearance.MyApp.detail.text"
                     android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Title" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/title"
                     style="@style/TextAppearance.MyApp.detail.text"
                     android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="title" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/releaseDate"
                     style="@style/TextAppearance.MyApp.detail.text"
                     android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="release" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/popularity"
                     style="@style/TextAppearance.MyApp.detail.text"
                     android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="popularity" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/language"
                     style="@style/TextAppearance.MyApp.detail.text"
                     android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="language" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/overview"
                     style="@style/TextAppearance.MyApp.detail.text"
                     android:layout_width="wrap_content"

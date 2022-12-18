@@ -1,41 +1,46 @@
 package com.example.challenge_chapter5.ui
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.challenge_chapter5.R
+import com.example.challenge_chapter5.data.user.DataUserManager
 import com.example.challenge_chapter5.databinding.FragmentAccountBinding
-import com.example.challenge_chapter5.model.User
+import com.example.challenge_chapter5.ui.viewmodel.UpdateViewModel
 
 class AccountFragment : Fragment() {
     lateinit var binding: FragmentAccountBinding
-    lateinit var  sharedPrefs : SharedPreferences
+    private lateinit var viewModel: UpdateViewModel
+    private lateinit var pref: DataUserManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        pref = DataUserManager(requireContext())
+        viewModel = ViewModelProvider(this, ViewModelFactory(pref))[UpdateViewModel::class.java]
         binding = FragmentAccountBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
 
-        var getusername = sharedPrefs.getString("username", null)
-        var getname = "Name : " + sharedPrefs.getString("name", null)
-        var getemail = "Email : " + sharedPrefs.getString("email", null)
-
-        binding.name.setText(getusername)
-        binding.username.setText(getname)
-        binding.email.setText(getemail)
+        viewModel.getUser().observe(viewLifecycleOwner){
+            binding.username.text = it.toString()
+        }
+        viewModel.getName().observe(viewLifecycleOwner){
+            binding.name.text = it.toString()
+        }
+        viewModel.getEmail().observe(viewLifecycleOwner){
+            binding.email.text = it.toString()
+        }
 
         binding.btnEdit.setOnClickListener(){
             findNavController().navigate(R.id.action_accountFragment_to_updateFragment)
@@ -46,11 +51,8 @@ class AccountFragment : Fragment() {
         }
 
         binding.cvLogout.setOnClickListener(){
-            sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
-            var addData = sharedPrefs.edit()
-            addData.putString("_username", null)
-            addData.putString("_password", null)
-            addData.apply()
+            viewModel.setIsLogin(false)
+            Toast.makeText(context, "Berhasil logout", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_accountFragment_to_loginFragment)
         }
 

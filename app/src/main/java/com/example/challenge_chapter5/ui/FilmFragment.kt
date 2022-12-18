@@ -5,22 +5,27 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_chapter5.R
+import com.example.challenge_chapter5.data.user.DataUserManager
 import com.example.challenge_chapter5.databinding.FragmentFilmBinding
 import com.example.challenge_chapter5.databinding.HeaderNavigationBinding
 import com.example.challenge_chapter5.model.Item
+import com.example.challenge_chapter5.ui.viewmodel.UpdateViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
     private var _binding: FragmentFilmBinding? = null
     private val binding get() = _binding!!
-    lateinit var sharedPrefs : SharedPreferences
+    private lateinit var userViewModel: UpdateViewModel
+    private lateinit var pref: DataUserManager
 
     private  val viewModel : MovieViewModel by viewModels()
 
@@ -28,6 +33,10 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+        pref = DataUserManager(requireContext())
+        userViewModel = ViewModelProvider(this, ViewModelFactory(pref))[UpdateViewModel::class.java]
         _binding = FragmentFilmBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -37,15 +46,15 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
 
         val adapter: MovieAdapter by lazy {
             MovieAdapter {
 
             }
         }
-        val user = sharedPrefs.getString(USERNAME, "")
-        binding.tvUser.text = "$user!"
+        userViewModel.getUser().observe(viewLifecycleOwner){
+            binding.tvUser.text = it.toString()
+        }
 
         binding.topAppBar.setNavigationOnClickListener {
             binding.drawerLayout.open()
@@ -73,11 +82,8 @@ class FilmFragment : Fragment(), MovieAdapter.ListMovieInterface {
                     true
                 }
                 R.id.logout -> {
-                    sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
-                    var addData = sharedPrefs.edit()
-                    addData.putString("_username", null)
-                    addData.putString("_password", null)
-                    addData.apply()
+                    userViewModel.setIsLogin(false)
+                    Toast.makeText(context, "Berhasil logout", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_filmFragment_to_loginFragment)
 
                 }

@@ -11,39 +11,49 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.challenge_chapter5.R
+import com.example.challenge_chapter5.data.user.DataUserManager
 import com.example.challenge_chapter5.databinding.FragmentLoginBinding
+import com.example.challenge_chapter5.ui.viewmodel.LoginViewModel
 
 class LoginFragment : Fragment() {
     lateinit var binding : FragmentLoginBinding
-    lateinit var  sharedPref : SharedPreferences
+    private lateinit var viewModel: LoginViewModel
+    private lateinit var pref: DataUserManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this
+
+        pref = DataUserManager(requireContext())
+        viewModel = ViewModelProvider(this, ViewModelFactory(pref))[LoginViewModel::class.java]
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         cekLogin()
-
-        sharedPref = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
-        var username = sharedPref.getString("username", null)
-        var password = sharedPref.getString("password", null)
+        var username = ""
+        var password = ""
 
         binding.login.setOnClickListener{
-            var _username = binding.username.text.toString()
-            var _password = binding.password.text.toString()
-            if(username == _username && password == _password){
-                var addData = sharedPref.edit()
-                addData.putString("_username", _username)
-                addData.putString("_password", _password)
-                addData.apply()
+            viewModel.getUser().observe(viewLifecycleOwner){
+                username = it.toString()
+            }
+            viewModel.getPassword().observe(viewLifecycleOwner){
+                password = it.toString()
+            }
+            val _username = binding.username.text.toString()
+            val _password = binding.password.text.toString()
+
+            if (username == _username && password == _password){
+                viewModel.setIsLogin(true)
                 findNavController().navigate(R.id.action_loginFragment_to_filmFragment)
             }
             else {
@@ -60,13 +70,12 @@ class LoginFragment : Fragment() {
     }
 
     private fun cekLogin() {
-        var data = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
-        var username = data.getString("_username", null)
-
-        Handler(Looper.myLooper()!!).postDelayed({
-            if(username != null)
-                findNavController().navigate(R.id.action_loginFragment_to_filmFragment)
-        },1000)
+        viewModel.getIsLogin().observe(viewLifecycleOwner){
+            Handler(Looper.myLooper()!!).postDelayed({
+                if(it == true)
+                    findNavController().navigate(R.id.action_loginFragment_to_filmFragment)
+            },1000)
+        }
     }
 
 }
